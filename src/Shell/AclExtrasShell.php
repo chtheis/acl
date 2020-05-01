@@ -17,6 +17,7 @@ namespace Acl\Shell;
 use Acl\AclExtras;
 use Cake\Console\ConsoleIo;
 use Cake\Console\Shell;
+use Cake\Console\ConsoleOptionParser;
 use Cake\Database\Exception;
 use Cake\ORM\TableRegistry;
 
@@ -56,7 +57,7 @@ class AclExtrasShell extends Shell
      *
      * @return void
      */
-    public function startup()
+    public function startup(): void
     {
         parent::startup();
         $this->AclExtras->startup();
@@ -100,7 +101,7 @@ class AclExtrasShell extends Shell
      *
      * @return \Cake\Console\ConsoleOptionParser
      */
-    public function getOptionParser()
+    public function getOptionParser(): ConsoleOptionParser
     {
         $parser = parent::getOptionParser();
 
