@@ -40,6 +40,10 @@ use Cake\ORM\TableRegistry;
  */
 class DbAcl implements AclInterface
 {
+	private $Permission = null;
+	private $Aro = null;
+	private $Aco = null;
+	
 
     /**
      * Constructor
