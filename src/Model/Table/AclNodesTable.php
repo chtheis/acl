@@ -103,7 +103,12 @@ class AclNodesTable extends Table
                     ],
                 ];
             }
-            $query = $this->find('all', $queryData);
+            $query = $this->find('all', 
+					conditions: $queryData['conditions'],
+					fields: $queryData['fields'],
+					join: $queryData['join'],
+					order: $queryData['order']
+			);
             $result = $query->toArray();
             $path = array_values($path);
 
@@ -182,7 +187,12 @@ class AclNodesTable extends Table
                 ],
                 'order' => ["{$type}.lft" => 'DESC'],
             ];
-            $query = $this->find('all', $queryData);
+			$query = $this->find('all', 
+					conditions: $queryData['conditions'],
+					fields: $queryData['fields'],
+					join: $queryData['join'],
+					order: $queryData['order']
+			);
 
             if ($query->count() == 0) {
                 throw new Exception\Exception(__d('cake_dev', "AclNode::node() - Couldn't find {0} node identified by \"{1}\"", [$type, print_r($ref, true)]));
