@@ -110,14 +110,14 @@ class PermissionsTable extends AclNodesTable
         for ($i = 0; $i < $count; $i++) {
             $permAlias = $this->getAlias();
 
-            $perms = $this->find('all', [
-                'conditions' => [
+            $perms = $this->find('all',
+                conditions: [
                     "{$permAlias}.aro_id" => $aroPaths[$i]->id,
                     "{$permAlias}.aco_id IN" => $acoIDs,
                 ],
-                'order' => [$this->Aco->getAlias() . '.lft' => 'desc'],
-                'contain' => $this->Aco->getAlias(),
-            ]);
+                order: [$this->Aco->getAlias() . '.lft' => 'desc'],
+                contain: $this->Aco->getAlias(),
+            );
 
             if ($perms->count() == 0) {
                 continue;
